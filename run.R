@@ -1,5 +1,3 @@
-{r, eval = FALSE}
-
 # Load the library for parsing
 library(argparse)
 
@@ -21,7 +19,7 @@ labels <- sample(1:clusters, length(cells), replace = TRUE)
 
 # Save the output
 output <- data.frame(cell_id = cells, louvain = labels, leiden = labels)
-write.csv(output, file.path(args$output_dir, "datasets-r.clusters.tsv"), sep = "\t")
+write.table(output, file.path(args$output_dir, "datasets-r.clusters.tsv"), sep = "\t")
 
 # So that the yaml doesnt crash (see AI decleration)
 writeLines("cell_id\tPC1", file.path(args$output_dir, "datasets-r.pca.tsv"))
